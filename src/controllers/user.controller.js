@@ -6,6 +6,7 @@ import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
 
+//registering the user-------------
  const registerUser=asyncHandler (async(req,res)=>{
     //steps that we have to follow--------------------
 
@@ -37,7 +38,7 @@ import jwt from "jsonwebtoken"
     if (existedUser) {
         throw new ApiError(409, "User with email or username already exists")
     }
-    //console.log(req.files);
+    // console.log(req.files);
 
     // check for images, check for avatar
     const avatarLocalPath = req.files?.avatar[0]?.path;
@@ -87,6 +88,6 @@ import jwt from "jsonwebtoken"
 
 } )
 
-
+//user login------------------------------
 
  export { registerUser }
