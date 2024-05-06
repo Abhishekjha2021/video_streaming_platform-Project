@@ -50,7 +50,7 @@ const userSchema = new Schema({
     },
 
     refreshToken:{
-        type:true
+        type:String
     }
 
 },{timestamps:true,versionKey:false})
