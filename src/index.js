@@ -1,5 +1,6 @@
 // import mongoose from "mongoose";             //we are not using these here . so remove it----------------
 // import {DB_NAME} from "./constants.js"
+import { app } from "./app.js"
 
 import dotenv from "dotenv"         // as soon as possible in your application import dotenv and configure dotenv .bcz we want ki jitna jaldi hmara
                             //app. load ho utni jaldi hmari sabhi environment variable har jagah avilable ho--so agar main file me hi load ho jaye to har jagah avilable ho jayga .so import dotenv as soon as possible--

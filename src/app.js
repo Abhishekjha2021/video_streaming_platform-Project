@@ -15,6 +15,14 @@ app.use(express.json({limit: "10kb"}))      //agar data jso format me aa rha hai
 app.use(express.urlencoded({extended: true,limit:"10kb"}))
 app.use(express.static("public"))
 app.use(cookieparser())
-//above are 4 configurations,that we have to do--------------
+//above are the 4 configurations,that we have to do--------------
 
-export default app // or export { app }
+//routes import------------
+import userRouter from "./routes/user.routes.js"
+
+//routes declaration---------
+app.use("/api/v1/users",userRouter)   //yha api/v1/users  url hit hone par cmd routes ke pass jayega and then wha jo likha hoga further wo process hoga----
+
+//https://localhost:8080/api/v1/users/register         final url is like bcz ab routes me register user ho rha hai ..so register comes here-------
+// export default app // or export { app }
+export { app }
