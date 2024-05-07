@@ -20,7 +20,7 @@ import jwt from "jsonwebtoken"
     // check for user creation
     // return res
 
-    const {fullName, email, username, password } = req.body                 //get user details from frontend
+    const {fullName, email, username, password } = req.body                 //ye 4 details le rhe hai user se-----
     //  console.log("email: ", email);               //print it using postman tool----------
     //  console.log("password: ", password);
 
@@ -33,6 +33,7 @@ import jwt from "jsonwebtoken"
     // check if user already exists: username, email---
     const existedUser = await User.findOne({
         $or: [{ username }, { email }]  //$or use krne se ab hum kitne bhi parameters se check kr skte hai,existed user ko..either by email or username or password or etc---
+        //ya to username se,ya email se check kr lo ki user phle se existed to nhi hai ------------
     })
 
     if (existedUser) {
