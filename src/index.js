@@ -38,7 +38,7 @@ connectDB()
 // import express from "express"
 // const app=express()
 
-// //taking ()() for immediate execute-------------------------
+//  //taking ()() for immediate execute-------------------------
 // ;(async()=>{
 
 //     //if the DB got connected-------------------------

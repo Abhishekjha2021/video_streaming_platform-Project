@@ -23,5 +23,8 @@ router.route("/register").post(
     registerUser
 )
 
+//login user--
+router.route("/login").post(loginUser)
+
 
 export default router 
