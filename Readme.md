@@ -26,3 +26,6 @@ Overall, dotenv is a valuable tool for managing environment variables in Node.js
 
 ------------------------------------------------cookies---------------------------------------------------------------------------
 A cookie is a small piece of data that a website stores on a user's computer or device. It's typically used by websites to remember information about the user, such as login credentials, preferences, shopping cart items, or tracking information. Cookies play a crucial role in enabling various features and functionalities on websites and improving the user experience.
+
+cookie-parser is a middleware for Express.js, a popular web application framework for Node.js. This middleware is used to parse cookies attached to the client's HTTP requests and populate the req.cookies object with the parsed cookies.
+
