@@ -11,8 +11,8 @@ app.use(cors({          //cors ko import krne ke baad ,uska configuration krna h
 }))
 
 //ab hmare pass backend me data kai jagah se aayega .url se bhi aayga ,koi json me data bhejenge and etc.so iska config. bhi krna hoga ---
-app.use(express.json({limit: "10kb"}))      //agar data jso format me aa rha hai to ,10kb tak ka hi data bhej skte hai
-app.use(express.urlencoded({extended: true,limit:"10kb"}))
+app.use(express.json({limit: "10kb"}))      //agar data json format me aa rha hai to ,10kb tak ka hi data bhej skte hai user--------
+app.use(express.urlencoded({extended: true,limit:"10kb"}))  //if the data is coming from url-------------
 app.use(express.static("public"))
 app.use(cookieparser())
 
