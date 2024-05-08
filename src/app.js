@@ -15,6 +15,7 @@ app.use(express.json({limit: "10kb"}))      //agar data jso format me aa rha hai
 app.use(express.urlencoded({extended: true,limit:"10kb"}))
 app.use(express.static("public"))
 app.use(cookieparser())
+
 //above are the 4 configurations,that we have to do--------------
 
 //routes import------------

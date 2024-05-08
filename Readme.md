@@ -22,3 +22,7 @@ The dotenv npm package is commonly used in Node.js projects to manage environmen
 3.Ease of Use: dotenv makes it easy to load environment variables from a .env file into Node.js's process.env object, where they can be accessed throughout your application. This eliminates the need for manual configuration and ensures that environment variables are available wherever they're needed.
 
 Overall, dotenv is a valuable tool for managing environment variables in Node.js applications, offering simplicity, security, and compatibility to streamline the development process and ensure the safe handling of sensitive information.
+
+
+------------------------------------------------cookies---------------------------------------------------------------------------
+A cookie is a small piece of data that a website stores on a user's computer or device. It's typically used by websites to remember information about the user, such as login credentials, preferences, shopping cart items, or tracking information. Cookies play a crucial role in enabling various features and functionalities on websites and improving the user experience.
