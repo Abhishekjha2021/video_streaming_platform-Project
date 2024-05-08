@@ -29,3 +29,9 @@ A cookie is a small piece of data that a website stores on a user's computer or 
 
 cookie-parser is a middleware for Express.js, a popular web application framework for Node.js. This middleware is used to parse cookies attached to the client's HTTP requests and populate the req.cookies object with the parsed cookies.
 
+
+---------------------------------------------------CORS--------------------------------------------------------------------------
+CORS stands for Cross-Origin Resource Sharing. It's a security feature implemented by web browsers to prevent malicious websites from making unauthorized requests to other websites. CORS defines a set of rules that determine whether a web browser should allow a web application to access resources from a different origin (domain, protocol, or port) than the one it was served from.
+
+CORS_ORIGIN=* ,The configuration CORS_ORIGIN=* typically means that the server is configured to allow cross-origin requests from any origin. In other words, the * wildcard symbol represents a "wildcard" origin, indicating that requests from any domain are permitted to access the server's resources.  
+  It's essential to use the CORS_ORIGIN=* configuration judiciously and only in scenarios where broad cross-origin access is genuinely required. In many cases, it's preferable to specify specific origins using a whitelist approach (CORS_ORIGIN=http://example.com), limiting access to trusted domains.
