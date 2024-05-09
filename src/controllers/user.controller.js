@@ -11,7 +11,7 @@ import mongoose from "mongoose"
 const generateAccessAndRefereshTokens = async(userId) =>{
     try {
         const user = await User.findById(userId)
-        const accessToken = user.generateAccessToken()
+        const accessToken = user.generateAccessToken()  //generateAccessToken() , is function that we built in user.model.js part. and we are calling it here to make token--
         const refreshToken = user.generateRefreshToken()
 
         user.refreshToken = refreshToken
@@ -102,6 +102,11 @@ const generateAccessAndRefereshTokens = async(userId) =>{
     }
 
     //return response----------------------
+    /*  statusCode,
+        message= "Something went wrong",
+        errors = [],
+        stack = ""*/
+
     return res.status(201).json(
         new ApiResponse(200, createdUser, "User registered Successfully")
     )
@@ -118,7 +123,7 @@ const loginUser = asyncHandler(async (req, res) =>{
     //send cookie
 
     const {email, username, password} = req.body
-    console.log(email);
+    // console.log(email);
 
     if (!username && !email) {
         throw new ApiError(400, "username or email is required")
@@ -144,10 +149,11 @@ const loginUser = asyncHandler(async (req, res) =>{
     throw new ApiError(401, "Invalid user credentials")
     }
 
+    //caling tokens---------------------------------------
    const {accessToken, refreshToken} = await generateAccessAndRefereshTokens(user._id)
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
-
+    //loggedInUserreturn krte time ,password and refreshToken ko show mat krna-----------------
     const options = {
         httpOnly: true,
         secure: true
@@ -164,11 +170,11 @@ const loginUser = asyncHandler(async (req, res) =>{
         stack = ""*/
 
         new ApiResponse(        //ApiResponse me below items send kr rha hai..check in utils part--------------
-            200, 
+            200,    //status code of response------------
             {
-                user: loggedInUser, accessToken, refreshToken
+                user: loggedInUser, accessToken, refreshToken       //data part of response------
             },
-            "User logged In Successfully"
+            "User logged In Successfully"                   //message of response------------
         )
     )
 
@@ -199,6 +205,7 @@ const logoutUser = asyncHandler(async(req, res) => {
     .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, {}, "User logged Out"))
 })
+
 
 
  export { 

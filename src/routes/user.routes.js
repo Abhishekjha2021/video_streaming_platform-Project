@@ -14,7 +14,7 @@ router.route("/register").post(
     upload.fields([
         {
             name:"avatar",
-            maxCount:1      //multer part-----------
+            maxCount:1      //multer part-----------bcz during doing registration,we will upload avatar and coverImage ..so multer will come----
         },
 
         {
