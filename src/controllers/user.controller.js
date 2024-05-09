@@ -27,7 +27,7 @@ const generateAccessAndRefereshTokens = async(userId) =>{
 
 //registering the user-------------
  const registerUser=asyncHandler (async(req,res)=>{
-    //steps that we have to follow--------------------
+    //steps, that we have to follow--------------------
 
     // get user details from frontend
     // validation - not empty
@@ -158,7 +158,12 @@ const loginUser = asyncHandler(async (req, res) =>{
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
     .json(
-        new ApiResponse(
+        /*statusCode,
+        message= "Something went wrong",
+        errors = [],
+        stack = ""*/
+
+        new ApiResponse(        //ApiResponse me below items send kr rha hai..check in utils part--------------
             200, 
             {
                 user: loggedInUser, accessToken, refreshToken

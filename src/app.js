@@ -6,7 +6,7 @@ import cookieparser from "cookie-parser"
 const app=express()
 
 app.use(cors({          //cors ko import krne ke baad ,uska configuration krna hoga ....i.e usme hum kya kya kese kese chahte hai---------we use .use for conf....and one more thing abhi configure hote hai app banane ke baad ,bcz tabhi to app.use() kr payenge--
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN,        //kon kon sa url hit valid hoga.......hamne CORS_ORIGIN me "*" dia hai ,means all types of url are valid..but hun apne according isse adjust kr skte hai----
     credentials: true
 }))
 
