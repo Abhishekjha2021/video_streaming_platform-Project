@@ -77,21 +77,26 @@ userSchema.methods.isPasswordCorrect=async function (password){
 
 
 
-//for generating access token and refresh token----------
-userSchema.methods.generateAccessToken = function(){
-    return jwt.sign(
+//generating access token----------
+userSchema.methods.generateAccessToken = function(){        //we have method of generating token......DB.methods.generateAccessToken/generateRefreshToken=function(){ yha token bnake usse return krdo}------------
+
+    return jwt.sign(            //jwt token generate hone par usse return kr do-----------
+        //3 chije deni hongi yha..access token generate krne ke liye-------------payload,access token,expiry------------
         {
             _id: this._id,
             email: this.email,
-            username: this.username,
+            username: this.username,            //payload section----------
             fullName: this.fullName
         },
+
         process.env.ACCESS_TOKEN_SECRET,
+
         {
             expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
+//generating refresh token---------------------------
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
@@ -101,7 +106,7 @@ userSchema.methods.generateRefreshToken = function(){
         process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn: process.env.REFRESH_TOKEN_EXPIRY
-        }
+        } 
     )
 }
 
