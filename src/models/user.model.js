@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose"
 import bcrypt from "bcrypt"
-import jsonwebtoken from "jsonwebtoken"
-
+import jwt from "jsonwebtoken"      //i was getting error bcz i wrote jsonWebToken here and during generating token i was writing jwt---so i changes jsonWebToken to jwt ,and then code worked nicely----
+ 
 const userSchema = new Schema({
 
     username:{
@@ -84,9 +84,9 @@ userSchema.methods.generateAccessToken = function(){        //we have method of 
         //3 chije deni hongi yha..access token generate krne ke liye-------------payload,access token,expiry------------
         {
             _id: this._id,
-            email: this.email,
-            username: this.username,            //payload section----------
-            fullName: this.fullName
+            // email: this.email,
+            // username: this.username,            //payload section----------
+            // fullName: this.fullName
         },
 
         process.env.ACCESS_TOKEN_SECRET,

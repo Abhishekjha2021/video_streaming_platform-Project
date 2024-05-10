@@ -10,12 +10,16 @@ import mongoose from "mongoose"
 
 const generateAccessAndRefereshTokens = async(userId) =>{
     try {
+        // console.log("yes")
         const user = await User.findById(userId)
+        // console.log("yes")
         const accessToken = user.generateAccessToken()  //generateAccessToken() , is function that we built in user.model.js part. and we are calling it here to make token--
+        // console.log("yes")
         const refreshToken = user.generateRefreshToken()
-
+        // console.log(refreshToken)
+        // console.log(accessToken)
         user.refreshToken = refreshToken
-        await user.save({ validateBeforeSave: false })
+        // await user.save({ validateBeforeSave: false })
 
         return {accessToken, refreshToken}
 
@@ -160,6 +164,8 @@ const loginUser = asyncHandler(async (req, res) =>{
         secure: true
     }
 
+    console.log("user loggedin successfully")
+    
     return res
     .status(200)
     .cookie("accessToken", accessToken, options)
