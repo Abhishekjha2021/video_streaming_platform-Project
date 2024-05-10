@@ -1,3 +1,6 @@
+//why we have taken this MW....so for doing user logout. we had to remove the credentials of user so how we can do this..so iske liye accessToken ko
+//expire kr do. so we have made this MW..
+
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken"

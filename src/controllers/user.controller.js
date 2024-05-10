@@ -150,10 +150,11 @@ const loginUser = asyncHandler(async (req, res) =>{
     }
 
     //caling tokens---------------------------------------
-   const {accessToken, refreshToken} = await generateAccessAndRefereshTokens(user._id)
+   const {accessToken} = await generateAccessAndRefereshTokens(user._id)
+   const {refreshToken} = await generateAccessAndRefereshTokens(user._id)
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
-    //loggedInUserreturn krte time ,password and refreshToken ko show mat krna-----------------
+    //loggedInUser return krte time ,password and refreshToken ko show mat krna--------.select method is used to ignore that items which we don't want to show---------
     const options = {
         httpOnly: true,
         secure: true

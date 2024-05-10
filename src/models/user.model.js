@@ -97,6 +97,7 @@ userSchema.methods.generateAccessToken = function(){        //we have method of 
     )
 }
 //generating refresh token---------------------------
+//ek functio bana kr usse return krwa dia hai,taki kahi se bhi call krne par mil jaye----------------
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
