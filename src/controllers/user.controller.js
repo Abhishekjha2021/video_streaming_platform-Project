@@ -43,7 +43,7 @@ const generateAccessAndRefereshTokens = async(userId) =>{
     // check for user creation
     // return res
 
-    const {fullName, email, username, password } = req.body                 //ye 4 details le rhe hai user se-----
+    const {fullName, email, username, password } = req.body                 //ye 4 details le rhe hai user se-----user se details aese hi lete hai----
     //  console.log("email: ", email);               //print it using postman tool----------
     //  console.log("password: ", password);
 
@@ -265,7 +265,28 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 })
 
 
+//changing the password---------------------------------------
+const changeCurrentPassword=asyncHandler(async(req,res)=>{
 
+    const{ oldPassword,newPassword }=req.body
+
+    const user=User.findById(req.user?._id)
+
+    //checking ki user jo old password enter kr rha hai wo sahi hai kya.----------- 
+    const isPasswordCorrect=await user.isPasswordCorrect(oldPassword) 
+
+    if(!isPasswordCorrect){
+        throw new ApiError(400,"invalid password entered")  
+    }
+
+    user.password = newPassword
+    await user.save({validateBeforeSave: false})
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Password changed successfully"))
+    
+})
 
  export { 
     registerUser,
