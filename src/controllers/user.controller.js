@@ -400,4 +400,5 @@ const updateUserCoverImage = asyncHandler(async(req, res) => {
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
+    changeCurrentPassword
  }
