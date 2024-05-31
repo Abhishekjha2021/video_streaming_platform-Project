@@ -3,7 +3,7 @@ Building the backend of a video streaming platform..
 -------------------------------------------------NODEMON----------------------------------------------------
 
 Nodemon is a tool used in Node.js development that helps streamline the development process by automatically restarting your Node.js application when changes are detected in the codebase. It's particularly handy during the development phase, as it saves you the trouble of manually stopping and restarting your server every time you make changes to your code.
-Here's why developers use Nodemon:--1.Automatic Restart 2.Time-saving 3.Improved Developer Experience 4.Enhanced Productivity
+Here's why developers use Nodemon:--1.Automatic Restart 2.Time-saving 3.Improved Developer Experience 4.Enhanced Productivity.
 
 
 -----------------------------------------------PRETTIER---------------------------------------------------------
@@ -75,6 +75,46 @@ Regardless of the approach you choose, it's essential to communicate the key rot
 
 
 
+------------------------------------------------------------------utils part(ApEror.js)------------------------------------------------
+Explanation:
+Class Declaration:
 
+class ApiError extends Error:
+This defines a new class ApiError that extends the built-in Error class in JavaScript. Extending Error allows ApiError to inherit all the properties and methods of the Error class.
+Constructor Method:
 
+constructor(statusCode, message = "Something went wrong", errors = [], stack = ""):
+This is the constructor method that gets called when a new instance of ApiError is created.
+statusCode: The HTTP status code associated with the error (e.g., 404, 500).
+message: A message describing the error. Default value is "Something went wrong".
+errors: An array to hold any additional error details. Default is an empty array.
+stack: The stack trace of the error. Default is an empty string.
+Calling the Parent Constructor:
 
+super(message);
+This calls the constructor of the parent Error class with the message argument. It sets the error message for the Error class.
+Setting Properties:
+
+this.statusCode = statusCode;
+Sets the statusCode property of the error instance.
+this.data = null;
+Initializes the data property to null. This could be used to attach any additional data to the error instance later.
+this.message = message;
+Sets the message property to the provided message.
+this.success = false;
+Sets a success property to false. This indicates that the API call was not successful.
+this.errors = errors;
+Sets the errors property to the provided errors array.
+Setting the Stack Trace:
+
+if (stack) { this.stack = stack; } else { Error.captureStackTrace(this, this.constructor); }
+If a stack trace is provided (stack is not empty), it sets the stack property to the provided value.
+Otherwise, it uses Error.captureStackTrace(this, this.constructor) to generate a stack trace for this error instance. Error.captureStackTrace is a V8-specific feature that creates a .stack property on the error instance.
+Export Statement:
+
+export { ApiError };
+This exports the ApiError class so it can be imported and used in other files within the project.
+
+-----In JavaScript, when you create a subclass that extends a built-in class (like Error), you use the super() function to call the constructor of the parent class. This is necessary to ensure that the parent class's constructor logic is executed, properly setting up the instance. Let's break down why and how super(message) is used in the context of the Error class..
+-----In the case of extending the Error class, calling super(message) ensures that the message property of the Error class is correctly set up.
+---This sets the message property on the ApiError instance using the logic defined in the Error class.

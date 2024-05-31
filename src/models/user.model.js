@@ -1,7 +1,8 @@
 import mongoose, {Schema} from "mongoose"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"      //i was getting error bcz i wrote jsonWebToken here and during generating token i was writing jwt---so i changes jsonWebToken to jwt ,and then code worked nicely----
- 
+
+
 const userSchema = new Schema({
 
     username:{
@@ -59,7 +60,7 @@ const userSchema = new Schema({
 //and here hum iska use kr rhe hai data save hone ke just phle,password ko encrypt krne me.means data save hone ke just phle password ko encrypt krdo(use hash code me badal do)
 
 userSchema.pre("save",async function (next){            //"pre" plugin means data save hone ke just phle kuch kro.and "post" plugin means data save hone ke just baad kuuch kro------
-//like userScheme.pre("save",async function (next){here write the code ki krna kya hai})
+//like userScheme.pre("save",async function (next){here write the code ki, krna kya hai})
     if(this.isModified("password")){        
         this.password=await bcrypt.hash(this.password,10)
         next()
@@ -69,12 +70,10 @@ userSchema.pre("save",async function (next){            //"pre" plugin means dat
     }
 })
 
-
  //check krta hai ki user ne jo password dia hai and DB ka password, dono same hai ki nahi-----------
 userSchema.methods.isPasswordCorrect=async function (password){
     return await bcrypt.compare(password,this.password)         //it returns value in true and false----------
 }
-
 
 
 //generating access token----------
